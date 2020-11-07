@@ -37,9 +37,9 @@ autoencoder= tf.keras.models.load_model('autoencoder_large.hdf5')  #loading auto
 
 encoder = Model(autoencoder.input, autoencoder.layers[3].output)   
 
-#UPLOAD_FOLDER = 'templates'
+UPLOAD_FOLDER = 'templates'
 app = Flask(__name__)
-#app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 app.config["ALLOWED_FILE_EXTENSIONS"] = ["PDF"]
 
@@ -135,7 +135,7 @@ def upload():
                 
                 #file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'x_test.PDF'))
                 
-                doc = fitz.open(file)
+                doc = fitz.open(UPLOAD_FOLDER+"/x_test.PDF")
                 #UPLOAD_FOLDER+"/x_test.PDF"
 
                 
